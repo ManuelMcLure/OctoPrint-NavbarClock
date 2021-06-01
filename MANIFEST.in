@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_navbarclock/templates *
+recursive-include octoprint_navbarclock/translations *
+recursive-include octoprint_navbarclock/static *
