@@ -35,7 +35,7 @@ class NavbarclockPlugin(
     def get_update_information(self):
         return {
             "navbarclock": {
-                "displayName": "NavbarClock Plugin",
+                "displayName": "Navbar Clock",
                 "displayVersion": self._plugin_version,
                 # version check: github repository
                 "type": "github_release",
