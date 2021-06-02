@@ -61,7 +61,7 @@ class NavbarclockPlugin(
         )
 
 
-__plugin_name__ = "NavbarClock Plugin"
+__plugin_name__ = "Navbar Clock"
 __plugin_pythoncompat__ = ">=3.7,<4"  # only python 3
 
 
