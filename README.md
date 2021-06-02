@@ -12,8 +12,11 @@ or manually using this URL:
 
 ## Configuration
 
-The only configuration option is the time zone to use for the clock:
+Time Zone: the time zone to display
+    - Server: the time zone of the OctoPrint instance
+    - Browser: the time zone of the browser client
+    - UTC: Coordinated Universal Time (aka GMT)
 
-- Server: the time zone of the OctoPrint instance
-- Browser: the time zone of the browser client
-- UTC: Coordinated Universal Time (aka GMT)
+Display Seconds: whether to display seconds or just hours and minutes
+
+24 Hour Format: Display "16:23:56" instead "4:23:56 PM" (for example)
