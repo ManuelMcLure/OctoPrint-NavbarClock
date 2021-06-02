@@ -13,9 +13,10 @@ or manually using this URL:
 ## Configuration
 
 Time Zone: the time zone to display
-    - Server: the time zone of the OctoPrint instance
-    - Browser: the time zone of the browser client
-    - UTC: Coordinated Universal Time (aka GMT)
+
+- Server: the time zone of the OctoPrint instance
+- Browser: the time zone of the browser client
+- UTC: Coordinated Universal Time (aka GMT)
 
 Display Seconds: whether to display seconds or just hours and minutes
 
