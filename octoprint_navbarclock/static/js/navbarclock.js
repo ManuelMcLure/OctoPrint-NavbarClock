@@ -44,7 +44,11 @@ $(function() {
                     hr = "0" + hr;
                 }
             } else {
-                if (hr > 12) {
+                if (hr == 0) {
+                    hr = 12;
+                } else if (hr == 12) {
+                    ampm = "PM";
+                } else if (hr > 12) {
                     hr -= 12;
                     ampm = "PM";
                 }
