@@ -20,4 +20,4 @@ Time Zone: the time zone to display
 
 Display Seconds: whether to display seconds or just hours and minutes
 
-24 Hour Format: Display "16:23:56" instead "4:23:56 PM" (for example)
+24 Hour Format: Display "16:23:56" instead of "4:23:56 PM" (for example)
