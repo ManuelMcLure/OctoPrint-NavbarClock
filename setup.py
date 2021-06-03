@@ -1,7 +1,7 @@
 plugin_identifier = "navbarclock"
 plugin_package = "octoprint_navbarclock"
 plugin_name = "OctoPrint-NavbarClock"
-plugin_version = "1.0.1"
+plugin_version = "1.0.2"
 plugin_description = """Adds a clock to the navbar"""
 plugin_author = "Manuel McLure"
 plugin_author_email = "manuel@mclure.org"
