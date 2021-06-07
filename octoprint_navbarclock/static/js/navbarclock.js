@@ -64,7 +64,7 @@ $(function() {
                 }
                 ts += ":" + sec;
             }
-            if (!self.settings.format24h()) {
+            if ((!self.settings.format24h()) && self.settings.showampm()) {
                 ts += " " + ampm;
             }
             self.timeStr(ts);

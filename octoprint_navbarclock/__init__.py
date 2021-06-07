@@ -19,6 +19,7 @@ class NavbarclockPlugin(
             "timeZone": "server",
             "showSeconds": False,
             "format24h": False,
+            "showampm": True,
         }
 
     ##~~ AssetPlugin mixin
@@ -26,8 +27,6 @@ class NavbarclockPlugin(
     def get_assets(self):
         return {
             "js": ["js/navbarclock.js"],
-            "css": ["css/navbarclock.css"],
-            "less": ["less/navbarclock.less"],
         }
 
     ##~~ Softwareupdate hook

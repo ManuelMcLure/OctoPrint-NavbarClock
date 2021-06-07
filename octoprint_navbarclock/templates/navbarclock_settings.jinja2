@@ -2,7 +2,7 @@
   <div class="control-group">
     <label class="control-label">Time Zone</label>
     <div class="controls">
-      <select data-bind="value: settingsViewModel.settings.plugins.navbarclock.timeZone">
+      <select data-bind="value: settings.timeZone">
         <option value="server">Server</option>
         <option value="browser">Browser</option>
         <option value="utc">UTC (aka GMT)</option>
@@ -12,14 +12,21 @@
   <div class="control-group">
     <div class="controls">
       <label class="checkbox">
-        <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.navbarclock.showSeconds">Display Seconds
+        <input type="checkbox" data-bind="checked: settings.showSeconds">Display Seconds
       </label>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
       <label class="checkbox">
-        <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.navbarclock.format24h">24 Hour Format
+        <input type="checkbox" data-bind="checked: settings.format24h">24 Hour Format
+      </label>
+    </div>
+  </div>
+  <div class="control-group" data-bind="visible: !settings.format24h()">
+    <div class="controls">
+      <label class="checkbox">
+        <input type="checkbox" data-bind="checked: settings.showampm">Display AM/PM
       </label>
     </div>
   </div>
