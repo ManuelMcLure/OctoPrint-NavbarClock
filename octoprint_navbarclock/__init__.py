@@ -49,7 +49,7 @@ class NavbarclockPlugin(
     ##~~ SimpleApi mixin
 
     def on_api_get(self, request):
-        self._logger.info("NavbarClock - API called")
+        self._logger.debug("NavbarClock - API called")
         return flask.jsonify(
             server_time={
                 "tz_offset": datetime.datetime.now(tz.tzlocal())
