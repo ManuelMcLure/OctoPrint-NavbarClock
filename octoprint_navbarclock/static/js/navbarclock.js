@@ -4,7 +4,7 @@
  * Author: Manuel McLure
  * License: AGPLv3
  */
-$(function() {
+$(function () {
     function NavbarClockViewModel(parameters) {
         var self = this;
         self.settingsViewModel = parameters[0];
@@ -12,7 +12,7 @@ $(function() {
         self.serverOffset = 0;
         self.serverTime = null;
 
-        self.clockUpdate = function() {
+        self.clockUpdate = function () {
             var ts;
             var d = new Date();
             var hr;
@@ -21,13 +21,13 @@ $(function() {
             var ampm = "AM";
             if (self.settings.timeZone() == "server") {
                 if (sec == 0 || self.serverTime == null) {
-                    OctoPrint.simpleApiGet("navbarclock")
-                        .done(function(response) {
-                            self.serverTime = response.server_time;
-                            self.serverOffset = self.serverTime.tz_offset +
-                                self.serverTime.server_timestamp -
-                                Math.trunc(Date.now() / 1000);
-                        });
+                    OctoPrint.simpleApiGet("navbarclock").done(function (response) {
+                        self.serverTime = response.server_time;
+                        self.serverOffset =
+                            self.serverTime.tz_offset +
+                            self.serverTime.server_timestamp -
+                            Math.trunc(Date.now() / 1000);
+                    });
                 }
                 d.setTime(Date.now() + self.serverOffset * 1000);
             }
@@ -64,22 +64,21 @@ $(function() {
                 }
                 ts += ":" + sec;
             }
-            if ((!self.settings.format24h()) && self.settings.showampm()) {
+            if (!self.settings.format24h() && self.settings.showampm()) {
                 ts += " " + ampm;
             }
             self.timeStr(ts);
-        }
+        };
 
-        self.onBeforeBinding = function() {
+        self.onBeforeBinding = function () {
             self.settings = self.settingsViewModel.settings.plugins.navbarclock;
             setInterval(self.clockUpdate, 1000);
-        }
-
+        };
     }
 
     OCTOPRINT_VIEWMODELS.push({
         construct: NavbarClockViewModel,
-        dependencies: [ "settingsViewModel" ],
-        elements: [ "#navbar_plugin_navbarclock", "#settings_plugin_navbarclock" ],
+        dependencies: ["settingsViewModel"],
+        elements: ["#navbar_plugin_navbarclock", "#settings_plugin_navbarclock"]
     });
 });

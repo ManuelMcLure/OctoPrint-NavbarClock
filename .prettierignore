@@ -1,0 +1,11 @@
+*.md
+*.css
+**/package.json
+**/package-lock.json
+**/*.min.js
+docs
+build
+dist
+venv
+venv2
+venv3
