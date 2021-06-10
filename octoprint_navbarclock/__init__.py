@@ -27,6 +27,7 @@ class NavbarclockPlugin(
     def get_assets(self):
         return {
             "js": ["js/navbarclock.js"],
+            "css": ["css/navbarclock.css"],
         }
 
     ##~~ Softwareupdate hook
