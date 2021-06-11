@@ -75,16 +75,16 @@ $(function () {
             if (OctoPrint.coreui.viewmodels.settingsViewModel.settings.plugins.hasOwnProperty('themeify')){
                 OctoPrint.coreui.viewmodels.settingsViewModel.settings.plugins.themeify.enabled.subscribe(function(enabled) {
                     if (enabled){
-                        $('#navbar_plugin_navbartemp').removeClass('ThemeifyOff');
+                        $('#navbar_plugin_navbarclock').removeClass('ThemeifyOff');
                     }else{
-                        $('#navbar_plugin_navbartemp').addClass('ThemeifyOff');
+                        $('#navbar_plugin_navbarclock').addClass('ThemeifyOff');
                     }
                 });
                 if (!OctoPrint.coreui.viewmodels.settingsViewModel.settings.plugins.themeify.enabled()){
-                    $('#navbar_plugin_navbartemp').addClass('ThemeifyOff');
+                    $('#navbar_plugin_navbarclock').addClass('ThemeifyOff');
                 }
             }else{
-                $('#navbar_plugin_navbartemp').addClass('ThemeifyOff');
+                $('#navbar_plugin_navbarclock').addClass('ThemeifyOff');
             }
         }
 

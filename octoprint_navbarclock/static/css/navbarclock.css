@@ -1,13 +1,13 @@
-#navbar_plugin_navbarclock {
-    padding-right: .5em;
-    padding-left: .5em;
-}
-
 #navbar_plugin_navbarclock .navbar-text {
-  color: #333;
-  text-shadow: 0 1px 0 #c8c8c8;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
   cursor: default;
 }
+
+html:not(.UICCustomTheme) #navbar_plugin_navbarclock .navbar-text {
+    color: inherit;
+}
+
 /* Standard colors for styling - we have ThemeifyOff to tell us when themeify is not running*/
 .navbar-inner.blue #navbar_plugin_navbarclock.ThemeifyOff .navbar-text,
 .navbar-inner.red #navbar_plugin_navbarclock.ThemeifyOff .navbar-text,
@@ -71,4 +71,3 @@
 
 .themeify.nighttime #navbar_plugin_navbarclock .navbar-text{
   color: #bac0c6;
-}
