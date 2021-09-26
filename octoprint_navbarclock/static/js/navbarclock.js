@@ -92,9 +92,9 @@ $(function () {
                     self.formatTime(d, "utc") + "</td></tr>";
                 content += "</tbody></table>";
                 self.popoverContent(content);
-                $("#navbar_plugin_navbar_clock_link").popover('enable');
+                $("#navbar_clock_div").popover('enable');
             } else {
-                $("#navbar_plugin_navbar_clock_link").popover('disable');
+                $("#navbar_clock_div").popover('disable');
             }
         };
 
