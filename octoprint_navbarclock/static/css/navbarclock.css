@@ -3,6 +3,13 @@
   padding-left: 0.5em;
   cursor: default;
 }
+#navbar_plugin_navbarclock a {
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: auto;
+}
 
 html:not(.UICCustomTheme) #navbar_plugin_navbarclock .navbar-text {
     color: inherit;

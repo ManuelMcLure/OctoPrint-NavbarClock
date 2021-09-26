@@ -9,41 +9,32 @@ $(function () {
         var self = this;
         self.settingsViewModel = parameters[0];
         self.timeStr = ko.observable("00:00:00");
+        self.popoverContent = ko.observable("Wait");
         self.serverOffset = 0;
         self.serverTime = null;
 
-        self.clockUpdate = function () {
-            var ts;
-            var d = new Date();
+        self.formatTime = function (d, z) {
             var hr;
             var min;
+            var dd = new Date(d);   // Copy date
             var sec = d.getUTCSeconds();
-            var ampm = "AM";
-            if (self.settings.timeZone() == "server") {
-                if (sec == 0 || self.serverTime == null) {
-                    OctoPrint.simpleApiGet("navbarclock").done(function (response) {
-                        self.serverTime = response.server_time;
-                        self.serverOffset =
-                            self.serverTime.tz_offset +
-                            self.serverTime.server_timestamp -
-                            Math.trunc(Date.now() / 1000);
-                    });
-                }
-                d.setTime(Date.now() + self.serverOffset * 1000);
+            if (z == "server") {
+                dd.setTime(d.getTime() + self.serverOffset * 1000);
             }
-            if (self.settings.timeZone() == "browser") {
-                var hr = d.getHours();
-                var min = d.getMinutes();
-                var sec = d.getSeconds();
+            if (z == "browser") {
+                var hr = dd.getHours();
+                var min = dd.getMinutes();
+                sec = dd.getSeconds();
             } else {
-                var hr = d.getUTCHours();
-                var min = d.getUTCMinutes();
+                var hr = dd.getUTCHours();
+                var min = dd.getUTCMinutes();
             }
             if (self.settings.format24h()) {
                 if (hr < 10) {
                     hr = "0" + hr;
                 }
             } else {
+                var ampm = "AM";
                 if (hr == 0) {
                     hr = 12;
                 } else if (hr == 12) {
@@ -53,7 +44,7 @@ $(function () {
                     ampm = "PM";
                 }
             }
-            var min = d.getMinutes();
+            var min = dd.getMinutes();
             if (min < 10) {
                 min = "0" + min;
             }
@@ -67,8 +58,55 @@ $(function () {
             if (!self.settings.format24h() && self.settings.showampm()) {
                 ts += " " + ampm;
             }
-            self.timeStr(ts);
+            return ts;
+        }
+
+        self.clockUpdate = function () {
+            var ts;
+            var d = new Date();
+            var hr;
+            var min;
+            var sec = d.getUTCSeconds();
+            var ampm = "AM";
+            if (self.settings.timeZone() == "server" ||
+                self.settings.popover()) {
+                if (sec == 0 || self.serverTime == null) {
+                    OctoPrint.simpleApiGet("navbarclock").done(function (response) {
+                        self.serverTime = response.server_time;
+                        self.serverOffset =
+                            self.serverTime.tz_offset +
+                            self.serverTime.server_timestamp -
+                            Math.trunc(Date.now() / 1000);
+                    });
+                }
+            }
+            self.timeStr(self.formatTime(d, self.settings.timeZone()));
+            if (self.settings.popover()) {
+                var content = '<table style="width: 100%;"><thead></thead><tbody>';
+                var d = new Date();
+                content += "<tr><td>Server:</td><td>" +
+                    self.formatTime(d, "server") + "</td></tr>";
+                content += "<tr><td>Browser:</td><td>" +
+                    self.formatTime(d, "browser") + "</td></tr>";
+                content += "<tr><td>UTC:</td><td>" +
+                    self.formatTime(d, "utc") + "</td></tr>";
+                content += "</tbody></table>";
+                self.popoverContent(content);
+                $("#navbar_plugin_navbar_clock_link").popover('enable');
+            } else {
+                $("#navbar_plugin_navbar_clock_link").popover('disable');
+            }
         };
+
+        self.popoverTrigger = ko.computed(function() {
+            console.log("popoverTrigger() called");
+            if (self.settings != null &&
+                self.settings.popover()) {
+                return "hover";
+            } else {
+                return "manual";
+            }
+        });
 
         self.onAllBound = function(){
             // Check for themify - sadly the themeify plugin always sets the "themeify" class on html even though themes are not active so we cant use that as not selector in the css - so we use js :(

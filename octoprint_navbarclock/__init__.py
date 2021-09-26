@@ -20,6 +20,7 @@ class NavbarclockPlugin(
             "showSeconds": False,
             "format24h": False,
             "showampm": True,
+            "popover": True,
         }
 
     ##~~ AssetPlugin mixin
