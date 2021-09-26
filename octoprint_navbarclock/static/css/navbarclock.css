@@ -11,6 +11,21 @@
   height: auto;
 }
 
+#navbar_plugin_navbarclock .popover {
+  width: auto !important;
+}
+#navbar_plugin_navbarclock .popover table {
+  width: auto !important;
+  table-layout: auto !important;
+}
+#navbar_plugin_navbarclock .popover td {
+  width: auto !important;
+  white-space: nowrap;
+}
+#navbar_plugin_navbarclock .popover td:last-child {
+  padding-left: 1em;
+}
+
 html:not(.UICCustomTheme) #navbar_plugin_navbarclock .navbar-text {
     color: inherit;
 }
