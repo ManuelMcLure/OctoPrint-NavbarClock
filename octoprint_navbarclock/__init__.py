@@ -61,6 +61,13 @@ class NavbarclockPlugin(
             }
         )
 
+    def is_api_protected(self):
+        return True
+
+    ##~~ TemplatePlugin mixin
+
+    def is_template_autoescaped(self):
+        return True
 
 __plugin_name__ = "Navbar Clock"
 __plugin_pythoncompat__ = ">=3.7,<4"  # only python 3
